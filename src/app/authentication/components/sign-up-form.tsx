@@ -1,6 +1,5 @@
-"use client";
-
 import { zodResolver } from "@hookform/resolvers/zod";
+import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -54,9 +53,19 @@ const SignUpForm = () => {
     <Card>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          <CardHeader>
-            <CardTitle>Cadastre-se</CardTitle>
-            <CardDescription>Faça um cadastro e comece a usar.</CardDescription>
+          <CardHeader className="flex items-center gap-4">
+            <Image
+              src="/logomarca.svg"
+              width={40}
+              height={40}
+              alt="logomarca"
+            />
+            <div>
+              <CardTitle>Cadastre-se</CardTitle>
+              <CardDescription>
+                Faça um cadastro para continuar.
+              </CardDescription>
+            </div>
           </CardHeader>
           <CardContent className="space-y-4">
             <FormField
@@ -66,7 +75,11 @@ const SignUpForm = () => {
                 <FormItem>
                   <FormLabel>Nome</FormLabel>
                   <FormControl>
-                    <Input placeholder="Nome" {...field} />
+                    <Input
+                      placeholder="Nome"
+                      {...field}
+                      className="border border-slate-300"
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -80,7 +93,11 @@ const SignUpForm = () => {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="Email" {...field} />
+                    <Input
+                      placeholder="Email"
+                      {...field}
+                      className="border border-slate-300"
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -94,7 +111,12 @@ const SignUpForm = () => {
                 <FormItem>
                   <FormLabel>Senha</FormLabel>
                   <FormControl>
-                    <Input placeholder="Senha" type="password" {...field} />
+                    <Input
+                      placeholder="Senha"
+                      type="password"
+                      className="border border-slate-300"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -102,7 +124,9 @@ const SignUpForm = () => {
             />
           </CardContent>
           <CardFooter>
-            <Button type="submit">Criar conta</Button>
+            <Button type="submit" className="w-full">
+              Criar conta
+            </Button>
           </CardFooter>
         </form>
       </Form>
