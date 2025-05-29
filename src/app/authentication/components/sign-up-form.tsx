@@ -145,7 +145,7 @@ const SignUpForm = () => {
               disabled={form.formState.isSubmitting}
             >
               {form.formState.isSubmitting ? (
-                <Loader2 className="text-secondary mr-2 h-4 w-4 animate-spin" />
+                <Loader2 className="text-secondary mr-2 h-5 w-5 animate-spin" />
               ) : (
                 "Criar conta"
               )}
