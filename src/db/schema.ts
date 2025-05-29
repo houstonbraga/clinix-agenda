@@ -28,8 +28,8 @@ export const clinicsTableRelations = relations(clinicsTable, ({ many }) => ({
 //RELACOES USERS / CLINICS , MANY TO MANY
 
 export const usersToClinicsTable = pgTable("users_to_clinics", {
-  userId: uuid("user_id").notNull().references(() => usersTable.id),
-  clinicId: uuid("clinic_id").notNull().references(() => clinicsTable.id),
+  userId: uuid("user_id").notNull().references(() => usersTable.id), //userId
+  clinicId: uuid("clinic_id").notNull().references(() => clinicsTable.id), //clinicId
   createAt: timestamp("created_at").defaultNow().notNull(),
   updateAt: timestamp("updated_at").defaultNow().$onUpdate(() => new Date()),
 });
