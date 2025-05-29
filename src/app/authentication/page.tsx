@@ -10,8 +10,8 @@ const AuthenticationPage = () => {
     <div className="flex h-screen w-screen items-center justify-center bg-slate-300">
       <Tabs defaultValue="login" className="w-[400px]">
         <TabsList className="bg-emerald-200 grid w-full grid-cols-2">
-          <TabsTrigger value="login">Login</TabsTrigger>
-          <TabsTrigger value="register">Cadastre-se</TabsTrigger>
+          <TabsTrigger value="login" className="cursor-pointer">Login</TabsTrigger>
+          <TabsTrigger value="register" className="cursor-pointer">Cadastre-se</TabsTrigger>
         </TabsList>
         <TabsContent value="login">
           <LoginForm />
