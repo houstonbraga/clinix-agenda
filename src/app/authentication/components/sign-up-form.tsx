@@ -50,7 +50,7 @@ const SignUpForm = () => {
     },
   });
 
-  async function onSubmit(values: z.infer<typeof registerSchema>) {
+  async function handleSubmit(values: z.infer<typeof registerSchema>) {
     await authClient.signUp.email(
       {
         email: values.email,
@@ -69,14 +69,14 @@ const SignUpForm = () => {
           }
           toast.error("Falha ao tentar criar conta!");
         },
-      },
+      }, 
     );
   }
 
   return (
     <Card>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
           <CardHeader className="flex items-center gap-4">
             <Image
               src="/logomarca.svg"

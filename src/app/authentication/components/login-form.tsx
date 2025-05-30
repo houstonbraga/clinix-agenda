@@ -48,7 +48,7 @@ const LoginForm = () => {
     },
   });
 
-  async function onSubmit(values: z.infer<typeof loginSchema>) {
+  async function handleSubmit(values: z.infer<typeof loginSchema>) {
     await authClient.signIn.email(
       {
         email: values.email,
@@ -69,7 +69,7 @@ const LoginForm = () => {
   return (
     <Card className="border border-gray-300">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
           <CardHeader className="flex items-center gap-4">
             <Image
               src="/logomarca.svg"
