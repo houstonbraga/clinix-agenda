@@ -11,8 +11,8 @@ const DashboardPage = async () => {
   });
 
   if (!session?.user) {
-    redirect("/authentication");
-  }
+    redirect("/authentication"); //autenticacao de usuario e redirecionamento
+  }  
 
   return (
     <div className="flex flex-col">

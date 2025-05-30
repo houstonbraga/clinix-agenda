@@ -38,7 +38,7 @@ const loginSchema = z.object({
     .string()
     .trim()
     .min(8, { message: "A senha deve conter no minimo 8 caracteres" }),
-});
+});  //schema do zod para login 
 
 const LoginForm = () => {
   const router = useRouter();
@@ -48,7 +48,7 @@ const LoginForm = () => {
       email: "",
       password: "",
     },
-  });
+  }); //pegar as info do form e guardar no tabela de dados
 
   async function handleSubmit(values: z.infer<typeof loginSchema>) {
     await authClient.signIn.email(
@@ -66,7 +66,7 @@ const LoginForm = () => {
         },
       },
     );
-  }
+  } //pegar os valores do form
 
   return (
     <Card className="border border-gray-300">
@@ -127,11 +127,11 @@ const LoginForm = () => {
               type="submit"
               className="w-full cursor-pointer"
               disabled={form.formState.isSubmitting}
-            >
+            > 
               {form.formState.isSubmitting ? (
                 <Loader2 className="text-secondary mr-2 h-5 w-5 animate-spin" />
               ) : (
-                "Entrar"
+                "Entrar" //botao de login com animacao de carregamento
               )}
             </Button>
           </CardFooter>

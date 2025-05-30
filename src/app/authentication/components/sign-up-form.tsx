@@ -39,7 +39,7 @@ const registerSchema = z.object({
     .string()
     .trim()
     .min(8, { message: "A senha tem que ter no mínimo 8 caracteres" }),
-});
+}); //tabela de dados 
 
 const SignUpForm = () => {
   const router = useRouter();
@@ -50,7 +50,7 @@ const SignUpForm = () => {
       email: "",
       password: "",
     },
-  });
+  }); //pegar as info do form e guardar no tabela de dados
 
   async function handleSubmit(values: z.infer<typeof registerSchema>) {
     await authClient.signUp.email(
@@ -73,7 +73,7 @@ const SignUpForm = () => {
         },
       }, 
     );
-  }
+  } //pegar os valores do form
 
   return (
     <Card>
@@ -158,7 +158,7 @@ const SignUpForm = () => {
               {form.formState.isSubmitting ? (
                 <Loader2 className="text-secondary mr-2 h-5 w-5 animate-spin" />
               ) : (
-                "Criar conta"
+                "Criar conta" //botao de cadastro com animacao
               )}
             </Button>
           </CardFooter>

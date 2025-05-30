@@ -12,7 +12,7 @@ const AuthenticationPage = async () => {
     headers: await headers(),
   });
   if (session?.user) {
-    redirect("/dashboard");
+    redirect("/dashboard"); //autenticacao de usuario e redirecionamento
   }
 
   return (
