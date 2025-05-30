@@ -90,10 +90,10 @@ export const clinicsTableRelations = relations(clinicsTable, ({ many }) => ({
 export const usersToClinicsTable = pgTable("users_to_clinics", {
   userId: text("user_id")
     .notNull()
-    .references(() => usersTable.id), //userId
+    .references(() => usersTable.id, { onDelete: "cascade" }), //userId
   clinicId: uuid("clinic_id")
     .notNull()
-    .references(() => clinicsTable.id), //clinicId
+    .references(() => clinicsTable.id , { onDelete: "cascade"}), //clinicId
   createAt: timestamp("created_at").defaultNow().notNull(),
   updateAt: timestamp("updated_at")
     .defaultNow()
