@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
@@ -58,9 +58,9 @@ const items = [
 
 export function AppSidebar() {
   const router = useRouter();
-
+  const pathname = usePathname();
   const session = authClient.useSession();
-  
+
   const handleSignOut = async () => {
     await authClient.signOut({
       fetchOptions: {
@@ -83,10 +83,24 @@ export function AppSidebar() {
             <SidebarMenu className="pl-2">
               {items.map((item) => (
                 <SidebarMenuItem key={item.title} className="mt-2">
-                  <SidebarMenuButton asChild>
+                  <SidebarMenuButton asChild isActive={pathname === item.url}>
                     <Link href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
+                      <item.icon
+                        className={
+                          pathname === item.url
+                            ? "text-primary"
+                            : "text-foreground"
+                        }
+                      />
+                      <span
+                        className={
+                          pathname === item.url
+                            ? "text-primary"
+                            : "text-foreground"
+                        }
+                      >
+                        {item.title}
+                      </span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -105,8 +119,12 @@ export function AppSidebar() {
                     <AvatarFallback>HB</AvatarFallback>
                   </Avatar>
                   <div>
-                    <p className='font-semibold'>{session.data?.user.clinic.name}</p>
-                    <p className="text-sm text-muted-foreground">{session.data?.user.email}</p>
+                    <p className="font-semibold">
+                      {session.data?.user.clinic.name}
+                    </p>
+                    <p className="text-muted-foreground text-sm">
+                      {session.data?.user.email}
+                    </p>
                   </div>
                 </SidebarMenuButton>
               </DropdownMenuTrigger>

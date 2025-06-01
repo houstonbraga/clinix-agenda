@@ -28,7 +28,7 @@ export const auth = betterAuth({
         },
       });
       //TODO: adaptavel para fazer para mais de uma clinica
-      const clinic = clinics[0];
+      const clinic = clinics[0]; 
       return {
         user: {
           ...user,
