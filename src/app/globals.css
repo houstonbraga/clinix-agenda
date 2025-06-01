@@ -112,7 +112,6 @@
   --sidebar-ring: oklch(0.7413 0.1451 171.06);
 }
 
-
 @layer base {
   * {
     @apply border-border outline-ring/50;

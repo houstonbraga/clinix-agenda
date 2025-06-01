@@ -6,7 +6,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
-import FormClinicCreate from "./components/form";
+import FormClinicCreate from "./_components/form";
 
 const ClinicForm = async () => {
   return (
