@@ -1,8 +1,6 @@
-import { PlusIcon } from "lucide-react";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
-import { Button } from "@/components/ui/button";
 import {
   PageActions,
   PageContainer,
@@ -13,6 +11,8 @@ import {
   PageTitle,
 } from "@/components/ui/page-container";
 import { auth } from "@/lib/auth";
+
+import AddDoctorButton from "./_components/add-doctor-button";
 //elaborado com a estrutura de composition pattern
 
 const DoctorsPage = async () => {
@@ -22,7 +22,7 @@ const DoctorsPage = async () => {
   if (!session?.user) {
     redirect("/authentication");
   }
-  if(!session?.user?.clinic) {
+  if (!session?.user?.clinic) {
     redirect("/clinic-form");
   }
   return (
@@ -33,10 +33,7 @@ const DoctorsPage = async () => {
           <PageDescription>Gerencie seus médicos cadastrados</PageDescription>
         </PageHeaderContent>
         <PageActions>
-          <Button>
-            <PlusIcon className="h-4 w-4" />
-            Adicionar Médico
-          </Button>
+          <AddDoctorButton />
         </PageActions>
       </PageHeader>
       <PageContent>
