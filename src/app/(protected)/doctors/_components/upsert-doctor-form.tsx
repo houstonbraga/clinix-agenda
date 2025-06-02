@@ -409,7 +409,7 @@ const UpsertDoctorForm = ({ doctor, onSuccess }: UpsertDoctorFormProps) => {
             {doctor && (
               <AlertDialog>
                 <AlertDialogTrigger asChild>
-                  <Button variant="outline">
+                  <Button variant="outline" className="cursor-pointer">
                     <TrashIcon className="h-4 w-4" />
                     Deletar
                   </Button>
@@ -430,7 +430,7 @@ const UpsertDoctorForm = ({ doctor, onSuccess }: UpsertDoctorFormProps) => {
                 </AlertDialogContent>
               </AlertDialog>
             )}
-            <Button type="submit" disabled={upsertDoctorAction.isPending}>
+            <Button className="cursor-pointer" type="submit" disabled={upsertDoctorAction.isPending}>
               {upsertDoctorAction.isPending
                 ? "Salvando..."
                 : doctor
