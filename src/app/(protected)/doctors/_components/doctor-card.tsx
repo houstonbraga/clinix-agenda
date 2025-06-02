@@ -48,18 +48,18 @@ const DoctorCard = ({ doctor }: DoctorCardProps) => {
       </CardHeader>
       <Separator />
       <CardContent className="flex flex-col gap-1">
-        <Badge variant="outline" className="rounded-full">
+        <Badge variant="outline" className="rounded-md">
           <CalendarIcon />
           {availability.from.format("dddd")} a {availability.to.format("dddd")}
         </Badge>
 
-        <Badge variant="outline" className="rounded-full">
+        <Badge variant="outline" className="rounded-md">
           <ClockIcon />
           {availability.from.format("HH:mm")} -{" "}
           {availability.to.format("HH:mm")}
         </Badge>
 
-        <Badge variant="outline" className="rounded-full">
+        <Badge variant="outline" className="rounded-md">
           <DollarSignIcon />
           {formatCurrencyInCents(doctor.appointmentPriceInCents)}
         </Badge>

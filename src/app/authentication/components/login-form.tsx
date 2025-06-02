@@ -78,7 +78,7 @@ const LoginForm = () => {
   };
 
   return (
-    <Card className="border border-gray-300">
+    <Card>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
           <CardHeader className="flex items-center gap-4">
