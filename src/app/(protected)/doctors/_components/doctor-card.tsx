@@ -77,6 +77,7 @@ const DoctorCard = ({ doctor }: DoctorCardProps) => {
               availableToTime: availability.to.format("HH:mm:ss"),
             }}
             onSuccess={() => setIsUpsertDoctorOpen(false)}
+            isOpen={isUpsertDoctorOpen}
           />
         </Dialog>
       </CardFooter>
