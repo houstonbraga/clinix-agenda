@@ -1,6 +1,6 @@
 "use client";
 
-import { Mail, PhoneCallIcon } from "lucide-react";
+import { Mail, Mars, PhoneCallIcon, Venus } from "lucide-react";
 import { useState } from "react";
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
@@ -68,6 +68,7 @@ const PatientCard = ({ patient }: PatientCardProps) => {
         </Badge>
 
         <Badge variant="outline" className="rounded-md">
+          {patient.sex === "male" ? <Mars /> : <Venus />}  
           {getSexLabel(patient.sex)}
         </Badge>
       </CardContent>
