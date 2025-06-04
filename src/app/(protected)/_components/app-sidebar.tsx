@@ -71,6 +71,11 @@ export function AppSidebar() {
     });
   };
 
+  const initialsLetters = session.data?.user?.clinic?.name
+    .split(" ")
+    .map((name) => name[0])
+    .join("");
+
   return (
     <Sidebar>
       <SidebarHeader className="border-b p-4">
@@ -116,7 +121,7 @@ export function AppSidebar() {
               <DropdownMenuTrigger asChild>
                 <SidebarMenuButton size={"lg"}>
                   <Avatar>
-                    <AvatarFallback>HB</AvatarFallback>
+                    <AvatarFallback>{initialsLetters}</AvatarFallback>
                   </Avatar>
                   <div>
                     <p className="font-semibold">
