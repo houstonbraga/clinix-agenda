@@ -37,9 +37,7 @@ import { patientsTable } from "@/db/schema";
 
 const formSchema = z.object({
   name: z.string().trim().min(1, { message: "O nome é obrigatório!" }),
-  email: z.string().email({
-    message: "Email inválido!",
-  }),
+  cpf: z.string().trim().min(11, { message: "O CPF é obrigatório!" }).max(11),
   phoneNumber: z
     .string()
     .trim()
@@ -65,7 +63,7 @@ const UpsertPatientForm = ({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: patient?.name ?? "",
-      email: patient?.email ?? "",
+      cpf: patient?.cpf ?? "",
       phoneNumber: patient?.phoneNumber ?? "",
       sex: patient?.sex ?? undefined,
     },
@@ -127,15 +125,19 @@ const UpsertPatientForm = ({
 
           <FormField
             control={form.control}
-            name="email"
+            name="cpf"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>Cpf</FormLabel>
                 <FormControl>
-                  <Input
-                    placeholder="exemplo@dominio.com"
-                    {...field}
-                  />
+                  <PatternFormat 
+                    format="###.###.###-##"
+                    placeholder="000.000.000-00"
+                    mask="_" 
+                    value={field.value} onValueChange={(value) => {
+                      field.onChange(value.value);
+                    }}
+                    customInput={Input}/>
                 </FormControl>
                 <FormMessage />
               </FormItem>

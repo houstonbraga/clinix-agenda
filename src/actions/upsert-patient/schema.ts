@@ -3,9 +3,7 @@ import { z } from "zod";
 export const upsertPatientSchema = z.object({
   id: z.string().uuid().optional(),
   name: z.string().trim().min(1, { message: "O nome é obrigatório!" }),
-  email: z.string().email({
-    message: "Email inválido!",
-  }),
+  cpf: z.string().trim().min(11, { message: "O CPF é obrigatório!" }).max(11),
   phoneNumber: z
     .string()
     .trim()
