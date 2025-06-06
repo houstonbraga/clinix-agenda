@@ -1,7 +1,7 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { MoreHorizontalIcon } from "lucide-react";
+import { MoreHorizontalIcon, PhoneIcon, User, VenusAndMars } from "lucide-react";
 
 import {
   DropdownMenu,
@@ -19,12 +19,23 @@ export const patienceColumnsTable: ColumnDef<Patience>[] = [
   {
     id: "name",
     accessorKey: "name",
-    header: "Name",
+    header: () => {
+      return (
+        <span className="text-primary">Nome</span>
+      )
+    },
   },
   {
     id: "cpf",
     accessorKey: "cpf",
-    header: "Cpf",
+    header: () => {
+      return (
+        <div className="flex items-center gap-2 text-primary">
+          <User size={16} />
+          <span>CPF</span>
+        </div>
+      );
+    },
     cell: ({ row }) => {
       const cpf = row.original.cpf || "";
       const cleaned = cpf.replace(/\D/g, "");
@@ -40,7 +51,14 @@ export const patienceColumnsTable: ColumnDef<Patience>[] = [
   {
     id: "phoneNumber",
     accessorKey: "phoneNumber",
-    header: "Número de telefone",
+    header: () => {
+      return (
+        <div className="flex items-center gap-2 text-primary">
+          <PhoneIcon size={16} />
+          <span>Número de telefone</span>
+        </div>
+      );
+    },
     cell: ({ row }) => {
       const phone = row.original.phoneNumber || "";
       const cleaned = phone.replace(/\D/g, "");
@@ -53,7 +71,14 @@ export const patienceColumnsTable: ColumnDef<Patience>[] = [
   {
     id: "sex",
     accessorKey: "sex",
-    header: "Sexo",
+    header: () => {
+      return (
+        <div className="flex items-center gap-2 text-primary">
+          <VenusAndMars size={16}/>
+          <span>Sexo</span>
+        </div>
+      )
+    },
     cell: (params) => {
       const patient = params.row.original;
       return patient.sex === "male" ? "Masculino" : "Feminino";
