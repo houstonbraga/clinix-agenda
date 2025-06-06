@@ -1,17 +1,11 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { MoreHorizontalIcon, PhoneIcon, User, VenusAndMars } from "lucide-react";
+import { PhoneIcon, User, VenusAndMars } from "lucide-react";
 
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { patientsTable } from "@/db/schema";
+
+import PatientTableActions from "./table-actions";
 
 type Patience = typeof patientsTable.$inferSelect;
 
@@ -20,9 +14,7 @@ export const patienceColumnsTable: ColumnDef<Patience>[] = [
     id: "name",
     accessorKey: "name",
     header: () => {
-      return (
-        <span className="text-primary">Nome</span>
-      )
+      return <span className="text-primary">Nome</span>;
     },
   },
   {
@@ -30,7 +22,7 @@ export const patienceColumnsTable: ColumnDef<Patience>[] = [
     accessorKey: "cpf",
     header: () => {
       return (
-        <div className="flex items-center gap-2 text-primary">
+        <div className="text-primary flex items-center gap-2">
           <User size={16} />
           <span>CPF</span>
         </div>
@@ -53,7 +45,7 @@ export const patienceColumnsTable: ColumnDef<Patience>[] = [
     accessorKey: "phoneNumber",
     header: () => {
       return (
-        <div className="flex items-center gap-2 text-primary">
+        <div className="text-primary flex items-center gap-2">
           <PhoneIcon size={16} />
           <span>Número de telefone</span>
         </div>
@@ -73,11 +65,11 @@ export const patienceColumnsTable: ColumnDef<Patience>[] = [
     accessorKey: "sex",
     header: () => {
       return (
-        <div className="flex items-center gap-2 text-primary">
-          <VenusAndMars size={16}/>
+        <div className="text-primary flex items-center gap-2">
+          <VenusAndMars size={16} />
           <span>Sexo</span>
         </div>
-      )
+      );
     },
     cell: (params) => {
       const patient = params.row.original;
@@ -86,20 +78,10 @@ export const patienceColumnsTable: ColumnDef<Patience>[] = [
   },
   {
     id: "actions",
-    cell: () => {
-      return (
-        <DropdownMenu>
-          <DropdownMenuTrigger>
-            <MoreHorizontalIcon />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuLabel>Opções</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>Editar</DropdownMenuItem>
-            <DropdownMenuItem>Remover</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      );
+    cell: (params) => {
+      const patient = params.row.original;
+
+      return <PatientTableActions patient={patient} />;
     },
   },
 ];
